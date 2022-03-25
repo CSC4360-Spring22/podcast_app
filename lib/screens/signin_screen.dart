@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:podcast_app/resusable_widgets/resuable_widget.dart';
-import 'package:podcast_app/screens/home_screen.dart';
+import 'package:podcast_app/screens/Logout(changeLater).dart';
 import 'package:podcast_app/screens/signup_screen.dart';
 import 'package:podcast_app/utils/color_utils.dart';
+import 'package:podcast_app/views/home.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -53,7 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           password: _passwordTextController.text)
                       .then((value) {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomeScreen()));
+                        MaterialPageRoute(builder: (context) => HomePage()));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
                   });
