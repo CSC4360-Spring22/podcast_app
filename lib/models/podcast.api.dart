@@ -21,8 +21,8 @@ class PodcastApi {
     });
 
     final response = await http.get(uri, headers: {
-      "x-rapidapi-key": '3cc1ecfdfbmsheea2fd8da9a07b6p10bca0jsnf9aa9efc35ff',
-      "x-rapidapi-host": 'listennotes.p.rapidapi.com',
+      "x-rapidapi-key": '',
+      "x-rapidapi-host": '',
       "useQueryString": "true"
     });
 
