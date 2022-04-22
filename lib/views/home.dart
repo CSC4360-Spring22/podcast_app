@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:podcast_app/models/podcast.api.dart';
 import 'package:podcast_app/models/podcast.dart';
+import 'package:podcast_app/screens/UserProfilePage.dart';
 import 'package:podcast_app/views/widgets/podcast_card.dart';
 
 import '../screens/favorites.dart';
@@ -15,11 +16,7 @@ class _HomePageState extends State<HomePage> {
   late List<Podcast> _podcast;
   bool _isLoading = true;
   int index = 0;
-  final screens = [
-    HomePage2(),
-    favorite(),
-    Center(child: Text('play', style: TextStyle(fontSize: 30)))
-  ];
+  final screens = [HomePage2(), favorite(), UserProfilePage()];
 
   @override
   void initState() {
