@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:podcast_app/models/podcast.api.dart';
 import 'package:podcast_app/models/podcast.dart';
+import 'package:podcast_app/screens/signin_screen.dart';
 import 'package:podcast_app/views/widgets/podcast_card.dart';
 
 import '../screens/favorites.dart';
@@ -44,9 +47,22 @@ class _HomePageState extends State<HomePage> {
           children: [
             Icon(Icons.podcasts),
             SizedBox(width: 10),
-            Text('Podcast')
+            Text('Podcast'),
           ],
         ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () async {
+                await GoogleSignIn().signOut();
+                await FirebaseAuth.instance.signOut();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignInScreen()),
+                    (route) => false);
+              },
+              icon: Icon(Icons.logout))
+        ],
       ),
       body: screens[index],
       bottomNavigationBar: NavigationBarTheme(
