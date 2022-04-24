@@ -60,102 +60,107 @@ class _SignInScreenState extends State<SignInScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      hexStringToColor("baeaff"),
-                      hexStringToColor("69b7d1"),
-                      hexStringToColor("00a4db")
-                    ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
-                  ),
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          20, MediaQuery.of(context).size.height * 0.2, 10, 0),
-                      child: Column(
-                        children: <Widget>[
-                          logoWidget("assets/images/podcast_image.png"),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          resuableTextField(
-                              "Enter Email address",
-                              Icons.person_outline,
-                              false,
-                              _emailTextController),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          resuableTextField(
-                              "Enter Password",
-                              Icons.lock_outline,
-                              true,
-                              _passwordTextController),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          signInSignUpButton(context, true, () {
-                            FirebaseAuth.instance
-                                .signInWithEmailAndPassword(
-                                    email: _emailTextController.text,
-                                    password: _passwordTextController.text)
-                                .then((value) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                            }).onError((error, stackTrace) {
-                              print("Error ${error.toString()}");
-                            });
-                          }),
-                          signUpOption(),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(
-                              onPressed: () async {
-                                await signInFunction();
-                              },
-                              child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.network(
-                                  'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png',
-                                  height: 36,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  "Sign In with Google",
-                                  style: TextStyle(fontSize: 20),
-                                )
-                              ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          colors: [
+                            hexStringToColor("baeaff"),
+                            hexStringToColor("69b7d1"),
+                            hexStringToColor("00a4db")
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter),
+                    ),
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(20,
+                            MediaQuery.of(context).size.height * 0.2, 10, 0),
+                        child: Column(
+                          children: <Widget>[
+                            logoWidget("assets/images/podcast_image.png"),
+                            SizedBox(
+                              height: 20,
                             ),
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(Colors.black),
-                              padding: MaterialStateProperty.all(
-                                EdgeInsets.symmetric(vertical: 12)
+                            resuableTextField(
+                                "Enter Email address",
+                                Icons.person_outline,
+                                false,
+                                _emailTextController),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            resuableTextField(
+                                "Enter Password",
+                                Icons.lock_outline,
+                                true,
+                                _passwordTextController),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            signInSignUpButton(context, true, () {
+                              FirebaseAuth.instance
+                                  .signInWithEmailAndPassword(
+                                      email: _emailTextController.text,
+                                      password: _passwordTextController.text)
+                                  .then((value) {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => HomePage()));
+                              }).onError((error, stackTrace) {
+                                print("Error ${error.toString()}");
+                              });
+                            }),
+                            signUpOption(),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: ElevatedButton(
+                                onPressed: () async {
+                                  await signInFunction();
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.network(
+                                      'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png',
+                                      height: 36,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Text(
+                                      "Sign In with Google",
+                                      style: TextStyle(fontSize: 20),
+                                    )
+                                  ],
+                                ),
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all(Colors.black),
+                                  padding: MaterialStateProperty.all(
+                                      EdgeInsets.symmetric(vertical: 12)),
+                                ),
                               ),
                             ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
