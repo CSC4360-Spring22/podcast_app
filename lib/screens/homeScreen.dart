@@ -29,6 +29,19 @@ class _HomePage2State extends State<HomePage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Row(
+        children: [
+          Icon(Icons.search),
+          /*
+          TextField(
+            decoration: InputDecoration(
+              hintText: 'Search',
+            ),
+          ),
+          */
+        ],
+      )),
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
           : ListView.builder(
