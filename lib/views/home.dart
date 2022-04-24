@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:podcast_app/models/podcast.api.dart';
 import 'package:podcast_app/models/podcast.dart';
 import 'package:podcast_app/screens/signin_screen.dart';
+import 'package:podcast_app/screens/userProfileScreen.dart';
 import 'package:podcast_app/views/widgets/podcast_card.dart';
 
 import '../screens/favorites.dart';
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
   final screens = [
     HomePage2(),
     favorite(),
-    Center(child: Text('play', style: TextStyle(fontSize: 30)))
+    userProfileScreen(),
   ];
 
   @override
