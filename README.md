@@ -5,6 +5,7 @@
 ## Screenshots with brief overview
 * Upon opening app, users are welcomed with this screen.
 * Google Sign-in is available for authentication-based entrance into the app.
+
 ![](assets/images/welcome2.jpg) ![](assets/images/google.jpg)
 
 
